@@ -1,0 +1,65 @@
+{
+  "target_name": {
+    "type": "string",
+    "default": "目标 bot",
+    "description": "被看护的 bot 名称（仅用于日志和提示）"
+  },
+  "health_url": {
+    "type": "string",
+    "default": "",
+    "description": "被看护 bot 的健康检查地址",
+    "hint": "例如 http://127.0.0.1:6185/ 或对方的公网地址。只要请求能拿到响应（包括 401/403）就视为存活；连不上、超时才算掉线"
+  },
+  "check_interval_seconds": {
+    "type": "int",
+    "default": 60,
+    "description": "检查间隔（秒），最小 10"
+  },
+  "failure_threshold": {
+    "type": "int",
+    "default": 3,
+    "description": "连续失败多少次判定为掉线，最小 1"
+  },
+  "timeout_seconds": {
+    "type": "int",
+    "default": 8,
+    "description": "单次健康检查超时（秒），最小 3"
+  },
+  "panel_base_url": {
+    "type": "string",
+    "default": "",
+    "description": "对方面板地址（优先使用面板接口重启）",
+    "hint": "例如 http://127.0.0.1:6185，留空则跳过面板方式，直接走群指令兜底"
+  },
+  "panel_username": {
+    "type": "string",
+    "default": "",
+    "description": "对方面板的登录账号"
+  },
+  "panel_password": {
+    "type": "string",
+    "default": "",
+    "description": "对方面板的登录密码"
+  },
+  "restart_path": {
+    "type": "string",
+    "default": "/api/v1/system/restart",
+    "description": "对方面板的重启接口路径"
+  },
+  "notify_umo": {
+    "type": "string",
+    "default": "",
+    "description": "兜底时发送重启指令的会话 UMO",
+    "hint": "例如 平台ID:GroupMessage:群号；留空则不发送指令"
+  },
+  "command_fallback": {
+    "type": "string",
+    "default": "-重启",
+    "description": "兜底发送的指令文本"
+  },
+  "restart_cooldown_seconds": {
+    "type": "int",
+    "default": 300,
+    "description": "两次自动重启之间的最小间隔（秒），最小 60"
+  }
+}
